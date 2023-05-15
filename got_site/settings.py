@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-h-bails-classifieds-nq85sjl7uo.us2.codeanyapp.com',
-                 'https://got-it.herokuapp.com/']
+                 'got-it.herokuapp.com']
 
 
 # Application definition
