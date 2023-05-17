@@ -31,7 +31,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['8000-h-bails-classifieds-nq85sjl7uo.us2.codeanyapp.com',
+                 'got-it.herokuapp.com']
 
 
 # Application definition
