@@ -8,6 +8,9 @@ class Category(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=150)
 
+    def __str__(self):
+        return self.name
+
 
 class Advertisement(models.Model):
     title = models.CharField(max_length=100)
@@ -19,3 +22,9 @@ class Advertisement(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=0)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)
+
+    class Meta:
+        ordering = ['-posted_on']
+
+    def __str__(self):
+        return self.title
