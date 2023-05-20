@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for advertisement in advertisement_list %}
+{{ advertisement.title }}
+{{ post.posted_on}}
+{% endfor %}
+
+{%endblock%}
