@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.AdList.as_view(), name='home'),
     path('accounts/', include('allauth.urls')),
     path('profile/', views.profile, name='profile'),
+    path('new_ad/', views.new_ad, name='new_ad'),
 ]

@@ -8,7 +8,7 @@ class Category(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=150)
 
-    def __str__(self):  
+    def __str__(self):
         return self.name
 
 
@@ -28,4 +28,4 @@ class Advertisement(models.Model):
 
     def __str__(self):
         return self.title
-   
+
