@@ -10,3 +10,7 @@ class AdList(generic.ListView):
     queryset = Advertisement.objects.order_by('-posted_on')
     template_name = 'index.html'
     paginate_by = 9
+
+
+def profile(request):
+    return render(request, "profile.html")
