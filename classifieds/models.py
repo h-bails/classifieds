@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_extensions.db.fields import RandomCharField
 
 # Create your models here.
 
@@ -22,6 +23,7 @@ class Advertisement(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=0)
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)
+    identifier = RandomCharField(length=8, editable=False, unique=True)
 
     class Meta:
         ordering = ['-posted_on']

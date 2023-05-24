@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'classifieds',
     'bootstrap5',
+    'django_extensions',
 ]
 
 SITE_ID = 1

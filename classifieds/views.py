@@ -34,3 +34,8 @@ def new_ad(request):
         'form': form
     }
     return render(request, 'new_ad.html', context)
+
+
+def view_ad(request, identifier):
+    ad = Advertisement.objects.get(identifier=identifier)
+    return render(request, "ad_detail.html", context={"ad": ad})
