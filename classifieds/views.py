@@ -24,6 +24,7 @@ def new_ad(request):
         if form.is_valid():
             form.instance.email = request.user.email
             form.instance.username = request.user.username
+            form.instance.user_id = request.user.id
             form.instance.url = "test/"
             form.save()
             messages.add_message(request, messages.SUCCESS,
@@ -38,4 +39,4 @@ def new_ad(request):
 
 def view_ad(request, identifier):
     ad = Advertisement.objects.get(identifier=identifier)
-    return render(request, "ad_detail.html", context={"ad": ad})
+    return render(request, "ad_detail.html", context={"advertisement": ad})

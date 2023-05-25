@@ -23,5 +23,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('profile/', views.profile, name='profile'),
     path('new_ad/', views.new_ad, name='new_ad'),
-    path('products/<uuid:identifier>/', views.view_ad, name='ad_detail'),
+    path('<str:identifier>/', views.view_ad, name='ad_detail'),
 ]

@@ -15,7 +15,6 @@ class Category(models.Model):
 
 class Advertisement(models.Model):
     title = models.CharField(max_length=100)
-    url = models.SlugField(max_length=200, unique=True)
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="user_ads")
     posted_on = models.DateField(auto_now=True)
@@ -30,4 +29,3 @@ class Advertisement(models.Model):
 
     def __str__(self):
         return self.title
-
