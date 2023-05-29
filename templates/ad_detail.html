@@ -7,4 +7,8 @@
 <p>{{ advertisement.description }}</p>
 <p><strong>${{ advertisement.price }}</strong></p>
 
+{% if user.is_authenticated and user == advertisement.created_by %}
+<button><a href="{% url 'edit_ad' advertisement.identifier %}">Edit ad</a></button>
+<button>Delete ad</button>
+{% endif %}
 {%endblock%}

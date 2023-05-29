@@ -24,4 +24,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('new_ad/', views.new_ad, name='new_ad'),
     path('<str:identifier>/', views.view_ad, name='ad_detail'),
+    path('<str:identifier>/edit_ad/', views.edit_ad, name='edit_ad'),
 ]

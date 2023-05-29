@@ -15,7 +15,7 @@ class Category(models.Model):
 
 class Advertisement(models.Model):
     title = models.CharField(max_length=100)
-    user = models.ForeignKey(
+    created_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="user_ads")
     posted_on = models.DateField(auto_now=True)
     description = models.TextField()

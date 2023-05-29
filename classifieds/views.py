@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from .models import Advertisement, Category
 from .forms import AdForm
@@ -38,5 +38,29 @@ def new_ad(request):
 
 
 def view_ad(request, identifier):
-    ad = Advertisement.objects.get(identifier=identifier)
+    ad = get_object_or_404(Advertisement, identifier=identifier)
     return render(request, "ad_detail.html", context={"advertisement": ad})
+
+
+def delete_ad(request, identifier):
+    ad = get_object_or_404(Advertisement, identifier=identifier)
+    ad.delete()
+    messages.add_message(request, messages.ERROR,
+                         "Ad deleted.")
+    return redirect('/')
+
+
+def edit_ad(request, identifier):
+    ad = get_object_or_404(Advertisement, identifier=identifier)
+    if request.method == 'POST':
+        form = AdForm(request.POST, instance=ad)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 "Ad updated.")
+            return redirect('/')
+    form = AdForm(instance=ad)
+    context = {
+        'form': form
+    }
+    return render(request, 'edit_ad.html', context)
