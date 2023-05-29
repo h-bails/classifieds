@@ -23,6 +23,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('profile/', views.profile, name='profile'),
     path('new_ad/', views.new_ad, name='new_ad'),
-    path('<str:identifier>/', views.view_ad, name='ad_detail'),
-    path('<str:identifier>/edit_ad/', views.edit_ad, name='edit_ad'),
+    path('view/<str:identifier>/', views.view_ad, name='ad_detail'),
+    path('edit/<str:identifier>/', views.edit_ad, name='edit'),
+    path('delete/<str:identifier>/', views.delete_ad, name='delete'),
 ]

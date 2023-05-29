@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic
 from .models import Advertisement, Category
 from .forms import AdForm
@@ -22,15 +22,16 @@ def new_ad(request):
     if request.method == 'POST':
         form = AdForm(request.POST)
         if form.is_valid():
-            form.instance.email = request.user.email
-            form.instance.username = request.user.username
-            form.instance.user_id = request.user.id
-            form.instance.url = "test/"
-            form.save()
+            ad = form.save(commit=False)
+            ad.email = request.user.email
+            ad.username = request.user.username
+            ad.created_by = request.user
             messages.add_message(request, messages.SUCCESS,
                                  "Ad posted.")
+            ad.save()
             return redirect('/')
-    form = AdForm()
+    else:
+        form = AdForm()
     context = {
         'form': form
     }
@@ -55,10 +56,10 @@ def edit_ad(request, identifier):
     if request.method == 'POST':
         form = AdForm(request.POST, instance=ad)
         if form.is_valid():
-            form.save()
+            form.save(commit=False)
             messages.add_message(request, messages.SUCCESS,
                                  "Ad updated.")
-            return redirect('/')
+            return redirect(reverse('ad_detail', args=[identifier]))
     form = AdForm(instance=ad)
     context = {
         'form': form
