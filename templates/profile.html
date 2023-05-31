@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h2>My details</h2>
+<p>{{ user.username }}</p>
+<p>{{ user.date_joined }}</p>
 
-<!-- {{ user.name }}
-{{ user.username }}
-{{ user.email }}
-{{ user.date_joined }} -->
+<h2>My ads</h2>
+{% for ad in ads %}
+<a href="{% url 'ad_detail' ad.identifier  %}">
+    <h3>{{ ad.title }}</h3>
+</a>
+<p>{{ ad.posted_on }}</p>
+{% empty %}
+<p>No ads posted yet.</p>
+{% endfor %}
 
-{%endblock%}
+{% endblock %}

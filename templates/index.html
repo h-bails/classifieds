@@ -3,7 +3,7 @@
 {% block content %}
 
 {% for advertisement in advertisement_list %}
-<a href="{% url 'ad_detail' advertisement.identifier  %}" class="post-link">
+<a href="{% url 'ad_detail' advertisement.identifier  %}">
     <h2>{{ advertisement.title }}</h2>
 </a>
 {{ advertisement.posted_on}}

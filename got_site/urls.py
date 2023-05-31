@@ -21,9 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.AdList.as_view(), name='home'),
     path('accounts/', include('allauth.urls')),
-    path('profile/', views.profile, name='profile'),
     path('new_ad/', views.new_ad, name='new_ad'),
     path('view/<str:identifier>/', views.view_ad, name='ad_detail'),
     path('edit/<str:identifier>/', views.edit_ad, name='edit'),
     path('delete/<str:identifier>/', views.delete_ad, name='delete'),
+    path('profile/', views.profile, name='profile'),
+
 ]

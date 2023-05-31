@@ -14,10 +14,6 @@ class AdList(generic.ListView):
     paginate_by = 9
 
 
-def profile(request):
-    return render(request, "profile.html")
-
-
 def new_ad(request):
     if request.method == 'POST':
         form = AdForm(request.POST)
@@ -65,3 +61,8 @@ def edit_ad(request, identifier):
         'form': form
     }
     return render(request, 'edit_ad.html', context)
+
+
+def profile(request):
+    user_ads = request.user.user_ads.all()
+    return render(request, "profile.html", {"ads": user_ads})
