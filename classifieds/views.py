@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
-from django.views import generic
+from django.views import generic, View
 from .models import Advertisement, Category
 from .forms import AdForm
 from django.contrib import messages
@@ -63,6 +63,19 @@ def edit_ad(request, identifier):
     return render(request, 'edit_ad.html', context)
 
 
-def profile(request):
-    user_ads = request.user.user_ads.all()
-    return render(request, "profile.html", {"ads": user_ads})
+def save_ad(request, identifier):
+    ad = get_object_or_404(Advertisement, identifier=identifier)
+    request.user.saved_ads.add(ad)
+    messages.add_message(request, messages.SUCCESS, "Ad saved.")
+    return render(request, 'ad_detail.html')
+
+
+class Profile(View):
+    def get(self, request, *args, **kwargs):
+        user_ads = request.user.user_ads.all()
+        saved_ads = request.user.saved_ads.all()
+        context = {
+            'user_ads': user_ads,
+            'saved_ads': saved_ads,
+        }
+        return render(request, "profile.html", context)

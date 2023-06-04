@@ -23,6 +23,8 @@ class Advertisement(models.Model):
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True)
     identifier = RandomCharField(length=8, editable=False, unique=True)
+    saved_by = models.ManyToManyField(
+        User, related_name="saved_ads", blank=True)
 
     class Meta:
         ordering = ['-posted_on']

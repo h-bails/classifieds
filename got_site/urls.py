@@ -25,6 +25,6 @@ urlpatterns = [
     path('view/<str:identifier>/', views.view_ad, name='ad_detail'),
     path('edit/<str:identifier>/', views.edit_ad, name='edit'),
     path('delete/<str:identifier>/', views.delete_ad, name='delete'),
-    path('profile/', views.profile, name='profile'),
-
+    path('save/<str:identifier>/', views.save_ad, name='save'),
+    path('profile/', views.Profile.as_view(), name='profile'),
 ]

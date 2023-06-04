@@ -5,14 +5,24 @@
 <p>{{ user.username }}</p>
 <p>{{ user.date_joined }}</p>
 
-<h2>My ads</h2>
-{% for ad in ads %}
+<h2>Created ads</h2>
+{% for ad in user_ads %}
 <a href="{% url 'ad_detail' ad.identifier  %}">
     <h3>{{ ad.title }}</h3>
 </a>
 <p>{{ ad.posted_on }}</p>
 {% empty %}
 <p>No ads posted yet.</p>
+{% endfor %}
+
+<h2>Saved ads</h2>
+{% for ad in saved_ads %}
+<a href="{% url 'ad_detail' ad.identifier  %}">
+    <h3>{{ ad.title }}</h3>
+</a>
+<p>{{ ad.posted_on }}</p>
+{% empty %}
+<p>No ads saved yet.</p>
 {% endfor %}
 
 {% endblock %}
