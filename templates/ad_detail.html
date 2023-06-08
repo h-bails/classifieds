@@ -14,5 +14,7 @@
 {% endif %}
 {% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}
 <button><a href="{% url 'save' advertisement.identifier %}">Save ad</a></button>
+<button><a href="{% url 'messages' %}">Send {{ advertisement.created_by}} a
+        message</a></button>
 {% endif %}
 {%endblock%}
