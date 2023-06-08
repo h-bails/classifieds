@@ -65,9 +65,15 @@ def edit_ad(request, identifier):
 
 def save_ad(request, identifier):
     ad = get_object_or_404(Advertisement, identifier=identifier)
-    request.user.saved_ads.add(ad)
-    messages.add_message(request, messages.SUCCESS, "Ad saved.")
-    return render(request, 'ad_detail.html')
+    saved_ads = request.user.saved_ads.all()
+
+    if ad not in saved_ads:
+        request.user.saved_ads.add(ad)
+        messages.add_message(request, messages.SUCCESS, "Ad saved.")
+    else:
+        request.user.saved_ads.remove(ad)
+        messages.add_message(request, messages.ERROR, "Ad unsaved.")
+    return render(request, 'ad_detail.html', context={"advertisement": ad})
 
 
 class Profile(View):

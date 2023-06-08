@@ -7,3 +7,7 @@ class AdForm(forms.ModelForm):
     class Meta:
         model = Advertisement
         fields = ['title', 'description', 'price', 'category']
+
+
+class ContactForm(forms.ModelForm):
+    message = forms.CharField(widget=forms.Textarea)
