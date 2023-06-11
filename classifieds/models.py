@@ -4,7 +4,7 @@ from django_extensions.db.fields import RandomCharField
 
 # Create your models here.
 
-
+# Model for the different advertisement categories
 class Category(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=150)
@@ -13,6 +13,7 @@ class Category(models.Model):
         return self.name
 
 
+# Model for the advertisements
 class Advertisement(models.Model):
     title = models.CharField(max_length=100)
     created_by = models.ForeignKey(
