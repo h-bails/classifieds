@@ -2,7 +2,7 @@
 {% block content %}
 
 <h1>{{ advertisement.title }}</h1>
-<h2>Posted on <strong>{{ advertisement.posted_on}}</strong> by <strong>{{ advertisement.created_by}}</strong></h2>
+<h2>Posted on <strong>{{ advertisement.posted_on }}</strong> by <strong>{{ advertisement.created_by }}</strong></h2>
 <h3>{{ advertisement.category }}</h3>
 <p>{{ advertisement.description }}</p>
 <p>{{advertisement.identifier }}</p>
@@ -14,5 +14,15 @@
 {% endif %}
 {% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}
 <button><a href="{% url 'save' advertisement.identifier %}">Save ad</a></button>
+<h3>Contact {{ advertisement.created_by}} about this item</h3>
+<form method="POST" action="{% url 'ad_detail' advertisement.identifier %}">
+    {% csrf_token %}
+    {{ contact_form.as_p }}
+    <div>
+        <p>
+            <button type="submit">Send message</button>
+        </p>
+    </div>
+</form>
 {% endif %}
 {%endblock%}

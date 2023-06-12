@@ -1,20 +1,23 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from .models import Advertisement, Category
-from .forms import AdForm
+from .forms import AdForm, ContactForm
 from django.contrib import messages
+from django.core.mail import EmailMessage, get_connection, send_mail
+from django.conf import settings
 
 # Create your views here.
 
 
-# Includes a list of ads on the homepage by default 
+# Includes a list of ads on the homepage by default
 class AdList(generic.ListView):
     model = Advertisement
     queryset = Advertisement.objects.order_by('-posted_on')
     template_name = 'index.html'
     paginate_by = 9
 
-# Creates a new ad when the 'Create an ad' form is filled out. Checks if the 
+
+# Creates a new ad when the 'Create an ad' form is filled out. Checks if the
 # form is valid, and if it is, saves the ad. Returns the user to the homepage.
 def new_ad(request):
     if request.method == 'POST':
@@ -36,10 +39,40 @@ def new_ad(request):
     return render(request, 'new_ad.html', context)
 
 
-# Shows the detail of a specific ad when a user clicks on it. 
+# Shows the detail of a specific ad when a user clicks on it.
 def view_ad(request, identifier):
     ad = get_object_or_404(Advertisement, identifier=identifier)
-    return render(request, "ad_detail.html", context={"advertisement": ad})
+    if request.method == "POST":
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            message = contact_form.cleaned_data['message']
+            email_subject = f'Inquiry on your ad: "{ad.title}"'
+            email_body = f"""Dear {ad.created_by.username},
+            
+            {request.user.username} is interested in your item '{ad.title}'.
+            You can contact them on {request.user.email} - please do not reply
+            to this email directly.
+
+            Their message is below:
+            {message}
+
+            Kind regards,
+
+            got classifieds site
+            """
+            send_email(
+                request,
+                ad.created_by.email,
+                email_subject,
+                email_body
+            )
+            return redirect('ad_detail', identifier=ad.identifier)
+    else:
+        contact_form = ContactForm()
+
+    return render(request, 'ad_detail.html', context={
+        'contact_form': contact_form,
+        'advertisement': ad})
 
 
 # Allows logged-in users to delete ads that they have submitted.
@@ -68,7 +101,7 @@ def edit_ad(request, identifier):
     return render(request, 'edit_ad.html', context)
 
 
-# Allows users to save their favourite ads to a list. 
+# Allows users to save their favourite ads to a list.
 def save_ad(request, identifier):
     ad = get_object_or_404(Advertisement, identifier=identifier)
     saved_ads = request.user.saved_ads.all()
@@ -83,7 +116,7 @@ def save_ad(request, identifier):
 
 
 # Class-based view for a user's profile. Displays ads the user has submitted,
-# and a list of their saved ads. 
+# and a list of their saved ads.
 class Profile(View):
     def get(self, request, *args, **kwargs):
         user_ads = request.user.user_ads.all()
@@ -93,3 +126,23 @@ class Profile(View):
             'saved_ads': saved_ads,
         }
         return render(request, "profile.html", context)
+
+
+def send_email(request, recipient, subject, message):
+    try:
+        with get_connection(
+            host=settings.EMAIL_HOST,
+            port=settings.EMAIL_PORT,
+            username=settings.EMAIL_HOST_USER,
+            password=settings.EMAIL_HOST_PASSWORD,
+            use_tls=settings.EMAIL_USE_TLS
+        ) as connection:
+            subject = subject
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [recipient]
+            message = message
+            EmailMessage(subject, email_from, recipient_list,
+                         message, connection=connection).send()
+            print("Email sent successfully!")
+    except Exception as e:
+        print(f"Failed to send email due to: {str(e)}")

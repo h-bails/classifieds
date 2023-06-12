@@ -9,8 +9,8 @@ class AdForm(forms.ModelForm):
         model = Advertisement
         fields = ['title', 'description', 'price', 'category']
 
+
 # Form for a potential buyer to get in touch with a seller.
-
-
-class ContactForm(forms.ModelForm):
+class ContactForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea)
+    fields = ['message']

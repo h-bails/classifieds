@@ -5,6 +5,8 @@ from django_extensions.db.fields import RandomCharField
 # Create your models here.
 
 # Model for the different advertisement categories
+
+
 class Category(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=150)
@@ -15,7 +17,7 @@ class Category(models.Model):
 
 # Model for the advertisements
 class Advertisement(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=50)
     created_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="user_ads")
     posted_on = models.DateField(auto_now=True)
