@@ -1,9 +1,10 @@
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from .models import Advertisement, Category
 from .forms import AdForm, ContactForm
 from django.contrib import messages
-from django.core.mail import EmailMessage, get_connection, send_mail
+from django.core.mail import send_mail
 from django.conf import settings
 
 # Create your views here.
@@ -130,19 +131,12 @@ class Profile(View):
 
 def send_email(request, recipient, subject, message):
     try:
-        with get_connection(
-            host=settings.EMAIL_HOST,
-            port=settings.EMAIL_PORT,
-            username=settings.EMAIL_HOST_USER,
-            password=settings.EMAIL_HOST_PASSWORD,
-            use_tls=settings.EMAIL_USE_TLS
-        ) as connection:
-            subject = subject
-            email_from = settings.EMAIL_HOST_USER
-            recipient_list = [recipient]
-            message = message
-            EmailMessage(subject, email_from, recipient_list,
-                         message, connection=connection).send()
-            print("Email sent successfully!")
+        send_mail(
+            subject,
+            message,
+            'got.classifieds@gmail.com',
+            [recipient, ]
+        )
+        print("Email sent successfully!")
     except Exception as e:
         print(f"Failed to send email due to: {str(e)}")
