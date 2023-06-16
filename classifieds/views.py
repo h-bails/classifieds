@@ -6,8 +6,9 @@ from .forms import AdForm, ContactForm
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-
-# Create your views here.
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 
 
 # Includes a list of ads on the homepage by default
@@ -20,6 +21,7 @@ class AdList(generic.ListView):
 
 # Creates a new ad when the 'Create an ad' form is filled out. Checks if the
 # form is valid, and if it is, saves the ad. Returns the user to the homepage.
+@login_required
 def new_ad(request):
     if request.method == 'POST':
         form = AdForm(request.POST)
@@ -41,6 +43,7 @@ def new_ad(request):
 
 
 # Shows the detail of a specific ad when a user clicks on it.
+@login_required
 def view_ad(request, identifier):
     ad = get_object_or_404(Advertisement, identifier=identifier)
     if request.method == "POST":
@@ -77,8 +80,12 @@ def view_ad(request, identifier):
 
 
 # Allows logged-in users to delete ads that they have submitted.
+@login_required
 def delete_ad(request, identifier):
     ad = get_object_or_404(Advertisement, identifier=identifier)
+    if request.user != ad.created_by:
+        return HttpResponseForbidden()
+
     ad.delete()
     messages.add_message(request, messages.ERROR,
                          "Ad deleted.")
@@ -86,8 +93,12 @@ def delete_ad(request, identifier):
 
 
 # Allows logged-in users to edit ads that they have submitted.
+@login_required
 def edit_ad(request, identifier):
     ad = get_object_or_404(Advertisement, identifier=identifier)
+    if request.user != ad.created_by:
+        return HttpResponseForbidden()
+
     if request.method == 'POST':
         form = AdForm(request.POST, instance=ad)
         if form.is_valid():
@@ -103,8 +114,12 @@ def edit_ad(request, identifier):
 
 
 # Allows users to save their favourite ads to a list.
+@login_required
 def save_ad(request, identifier):
     ad = get_object_or_404(Advertisement, identifier=identifier)
+    if request.user == ad.created_by:
+        return HttpResponseForbidden()
+
     saved_ads = request.user.saved_ads.all()
 
     if ad not in saved_ads:
