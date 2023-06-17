@@ -6,6 +6,7 @@ from cloudinary.forms import CloudinaryFileField
 
 # Form to create a new ad instance.
 class AdForm(forms.ModelForm):
+    # auto resize the uploaded images
     image_1 = CloudinaryFileField(
         options={
             'crop': 'fill',

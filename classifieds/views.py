@@ -4,11 +4,11 @@ from django.views import generic, View
 from .models import Advertisement, Category
 from .forms import AdForm, ContactForm
 from django.contrib import messages
-from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+from cloudinary import exceptions as cloudinary_exceptions
 
 
 # Includes a list of ads on the homepage by default
@@ -25,15 +25,22 @@ class AdList(generic.ListView):
 def new_ad(request):
     if request.method == 'POST':
         form = AdForm(request.POST, request.FILES)
-        if form.is_valid():
-            ad = form.save(commit=False)
-            ad.email = request.user.email
-            ad.username = request.user.username
-            ad.created_by = request.user
-            messages.add_message(request, messages.SUCCESS,
-                                 "Ad posted.")
-            ad.save()
-            return redirect('/')
+
+        try:
+            if form.is_valid():
+                ad = form.save()
+                ad.email = request.user.email
+                ad.username = request.user.username
+                ad.created_by = request.user
+                messages.add_message(request, messages.SUCCESS,
+                                     "Ad posted.")
+                ad.save()
+                return redirect('/')
+        except cloudinary_exceptions.Error as e:
+            messages.add_message(request, messages.ERROR,
+                                 f"Error when uploading image: {e}")
+            return render(request, 'new_ad.html', {'form': form})
+
     else:
         form = AdForm()
     context = {
@@ -101,11 +108,18 @@ def edit_ad(request, identifier):
 
     if request.method == 'POST':
         form = AdForm(request.POST, request.FILES, instance=ad)
-        if form.is_valid():
-            form.save(commit=False)
-            messages.add_message(request, messages.SUCCESS,
-                                 "Ad updated.")
-            return redirect(reverse('ad_detail', args=[identifier]))
+        
+        try:
+            if form.is_valid():
+                form.save()
+                messages.add_message(request, messages.SUCCESS,
+                                    "Ad updated.")
+                return redirect(reverse('ad_detail', args=[identifier]))
+        except cloudinary_exceptions.Error as e:
+            messages.add_message(request, messages.ERROR,
+            f"Error when uploading image: {e}")
+            return render(request, 'edit_ad.html', {'form': form})
+
     form = AdForm(instance=ad)
     context = {
         'form': form
