@@ -2,8 +2,9 @@
 
 {% block content %}
 <h2>My details</h2>
-<p>{{ user.username }}</p>
-<p>{{ user.date_joined }}</p>
+<p>Username: {{ user.username }}</p>
+<p>Email address: {{ user.date_joined }}</p>
+<p>Date joined: {{ user.date_joined }}</p>
 
 <h2>Created ads</h2>
 {% for ad in user_ads %}

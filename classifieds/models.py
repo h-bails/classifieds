@@ -1,12 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django_extensions.db.fields import RandomCharField
+from cloudinary.models import CloudinaryField
 
-# Create your models here.
 
 # Model for the different advertisement categories
-
-
 class Category(models.Model):
     name = models.CharField(max_length=40)
     description = models.CharField(max_length=150)
@@ -28,6 +26,8 @@ class Advertisement(models.Model):
     identifier = RandomCharField(length=8, editable=False, unique=True)
     saved_by = models.ManyToManyField(
         User, related_name="saved_ads", blank=True)
+    image_1 = CloudinaryField('image_1', blank=True, null=True)
+    image_2 = CloudinaryField('image_2', blank=True, null=True)
 
     class Meta:
         ordering = ['-posted_on']

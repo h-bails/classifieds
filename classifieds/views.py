@@ -24,7 +24,7 @@ class AdList(generic.ListView):
 @login_required
 def new_ad(request):
     if request.method == 'POST':
-        form = AdForm(request.POST)
+        form = AdForm(request.POST, request.FILES)
         if form.is_valid():
             ad = form.save(commit=False)
             ad.email = request.user.email
@@ -100,7 +100,7 @@ def edit_ad(request, identifier):
         return HttpResponseForbidden()
 
     if request.method == 'POST':
-        form = AdForm(request.POST, instance=ad)
+        form = AdForm(request.POST, request.FILES, instance=ad)
         if form.is_valid():
             form.save(commit=False)
             messages.add_message(request, messages.SUCCESS,
@@ -133,7 +133,7 @@ def save_ad(request, identifier):
 
 # Class-based view for a user's profile. Displays ads the user has submitted,
 # and a list of their saved ads.
-class Profile(View):
+class Profile(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         user_ads = request.user.user_ads.all()
         saved_ads = request.user.saved_ads.all()
