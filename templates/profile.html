@@ -1,29 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>My details</h2>
-<p>Username: {{ user.username }}</p>
-<p>Email address: {{ user.date_joined }}</p>
-<p>Date joined: {{ user.date_joined }}</p>
+<div class="container py-4 ps-3">
+    <h1>My details</h1>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Username:</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Email address:</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Date joined:</th>
+                <td>{{ user.date_joined }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-<h2>Created ads</h2>
-{% for ad in user_ads %}
-<a href="{% url 'ad_detail' ad.identifier  %}">
-    <h3>{{ ad.title }}</h3>
-</a>
-<p>{{ ad.posted_on }}</p>
-{% empty %}
-<p>No ads posted yet.</p>
-{% endfor %}
+    <h2 class="pt-2">Created ads</h2>
+    {% for ad in user_ads %}
+    <a href="{% url 'ad_detail' ad.identifier  %}">
+        <h4>{{ ad.title }}</h4>
+    </a>
+    <p>{{ ad.posted_on }}</p>
+    {% empty %}
+    <p>No ads posted yet.</p>
+    {% endfor %}
 
-<h2>Saved ads</h2>
-{% for ad in saved_ads %}
-<a href="{% url 'ad_detail' ad.identifier  %}">
-    <h3>{{ ad.title }}</h3>
-</a>
-<p>{{ ad.posted_on }}</p>
-{% empty %}
-<p>No ads saved yet.</p>
-{% endfor %}
-
+    <h2 class="pt-1">Saved ads</h2>
+    {% for ad in saved_ads %}
+    <a href="{% url 'ad_detail' ad.identifier  %}">
+        <h4>{{ ad.title }}</h4>
+    </a>
+    <p>{{ ad.posted_on }}</p>
+    {% empty %}
+    <p>No ads saved yet.</p>
+    {% endfor %}
+</div>
 {% endblock %}

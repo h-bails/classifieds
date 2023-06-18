@@ -4,18 +4,18 @@
 {% block content %}
 
 <h1>{{ advertisement.title }}</h1>
-<h2>Posted on <strong>{{ advertisement.posted_on }}</strong> by <strong>{{ advertisement.created_by }}</strong></h2>
+<h4>Posted on <strong>{{ advertisement.posted_on }}</strong> by <strong>{{ advertisement.created_by }}</strong></h4>
+<h5>Category: {{ advertisement.category }}</h5>
 <p>Ad ID: {{advertisement.identifier }}</p>
-<h3>Category: {{ advertisement.category }}</h3>
 <p>Description: {{ advertisement.description }}</p>
 <p><strong>Price: ${{ advertisement.price }}</strong></p>
 
 {% if advertisement.image_1 %}
-{% cloudinary advertisement.image_1 format="jpg" width=400 height=400 crop="fill" %}
+{% cloudinary advertisement.image_1 format="jpg" width=300 height=300 crop="fill" %}
 {% endif %}
 
 {% if advertisement.image_2 %}
-{% cloudinary advertisement.image_2 format="jpg" width=400 height=400 crop="fill" %}
+{% cloudinary advertisement.image_2 format="jpg" width=300 height=300 crop="fill" %}
 {% endif %}
 
 <br><br>

@@ -4,7 +4,7 @@
 
 {% for advertisement in advertisement_list %}
 <a href="{% url 'ad_detail' advertisement.identifier  %}">
-    <h2>{{ advertisement.title }}</h2>
+    <h4>{{ advertisement.title }}</h4>
 </a>
 {{ advertisement.posted_on}}
 {% endfor %}
