@@ -8,13 +8,20 @@
 </div>
 
 <!-- Ad list -->
-<div class="p-4">
-    {% for advertisement in advertisement_list %}
-    <a href="{% url 'ad_detail' advertisement.identifier  %}">
-        <h4>{{ advertisement.title }}</h4>
-    </a>
-    {{ advertisement.posted_on}}
-    {% endfor %}
+<div class="container flex-wrap py-5">
+    <div class="row justify-content-between">
+        <h2>Latest ads:</h2>
+        {% for advertisement in advertisement_list %}
+        <div class="card col-lg-3 my-2">
+            <div class="card-body">
+                <a href="{% url 'ad_detail' advertisement.identifier  %}">
+                    <h4 class="card-title text-decoration-none">{{ advertisement.title }}</h4>
+                </a>
+                <h6 class="card-subtitle mb-2 text-muted">{{ advertisement.posted_on}}</h6>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 {%endblock%}

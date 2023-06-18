@@ -1,7 +1,7 @@
 body {
     background-color: #efeef2;
     font-family: 'Chivo', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .logo {
@@ -35,4 +35,9 @@ body {
 .btn-confirm {
     background-color: #ab7dca;
     color: #fff;
+}
+
+.card a {
+    text-decoration: none;
+    color: #509f7a;
 }

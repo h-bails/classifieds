@@ -1,43 +1,60 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container py-4 ps-3">
-    <h1>My details</h1>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Username:</th>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <th>Email address:</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Date joined:</th>
-                <td>{{ user.date_joined }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row py-4">
+        <h1>My details</h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Username:</th>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <th>Email address:</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th>Date joined:</th>
+                    <td>{{ user.date_joined }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <h2 class="pt-2">Created ads</h2>
-    {% for ad in user_ads %}
-    <a href="{% url 'ad_detail' ad.identifier  %}">
-        <h4>{{ ad.title }}</h4>
-    </a>
-    <p>{{ ad.posted_on }}</p>
-    {% empty %}
-    <p>No ads posted yet.</p>
-    {% endfor %}
+    <div class="row">
+        <h2 class="pt-2">Created ads</h2>
+        <div class="row justify-content-between">
+            {% for ad in user_ads %}
+            <div class="card col-lg-5 my-2">
+                <div class="card-body">
+                    <a href="{% url 'ad_detail' ad.identifier  %}">
+                        <h4>{{ ad.title }}</h4>
+                    </a>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ ad.posted_on}}</h6>
+                </div>
+            </div>
+            {% empty %}
+            <p>No ads posted yet.</p>
+            {% endfor %}
+        </div>
+    </div>
 
-    <h2 class="pt-1">Saved ads</h2>
-    {% for ad in saved_ads %}
-    <a href="{% url 'ad_detail' ad.identifier  %}">
-        <h4>{{ ad.title }}</h4>
-    </a>
-    <p>{{ ad.posted_on }}</p>
-    {% empty %}
-    <p>No ads saved yet.</p>
-    {% endfor %}
-</div>
-{% endblock %}
+    <div class="row">
+        <h2 class="pt-2">Saved ads</h2>
+        <div class="row justify-content-between">
+            {% for ad in saved_ads %}
+            <div class="card col-lg-5 my-2">
+                <div class="card-body">
+                    <a href="{% url 'ad_detail' ad.identifier  %}">
+                        <h4>{{ ad.title }}</h4>
+                    </a>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ ad.posted_on}}</h6>
+                </div>
+            </div>
+            {% empty %}
+            <p>No ads saved yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
