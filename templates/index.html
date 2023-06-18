@@ -2,11 +2,19 @@
 
 {% block content %}
 
-{% for advertisement in advertisement_list %}
-<a href="{% url 'ad_detail' advertisement.identifier  %}">
-    <h4>{{ advertisement.title }}</h4>
-</a>
-{{ advertisement.posted_on}}
-{% endfor %}
+<!-- Hero Image -->
+<div>
+    <img class="img-fluid" src="../static/images/hero-banner-intro.png" alt="hero banner">
+</div>
+
+<!-- Ad list -->
+<div class="p-4">
+    {% for advertisement in advertisement_list %}
+    <a href="{% url 'ad_detail' advertisement.identifier  %}">
+        <h4>{{ advertisement.title }}</h4>
+    </a>
+    {{ advertisement.posted_on}}
+    {% endfor %}
+</div>
 
 {%endblock%}

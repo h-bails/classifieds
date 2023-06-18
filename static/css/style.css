@@ -1,6 +1,7 @@
 body {
     background-color: #efeef2;
     font-family: 'Chivo', sans-serif;
+    overflow: hidden;
 }
 
 .logo {
