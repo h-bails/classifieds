@@ -108,16 +108,16 @@ def edit_ad(request, identifier):
 
     if request.method == 'POST':
         form = AdForm(request.POST, request.FILES, instance=ad)
-        
+
         try:
             if form.is_valid():
                 form.save()
                 messages.add_message(request, messages.SUCCESS,
-                                    "Ad updated.")
+                                     "Ad updated.")
                 return redirect(reverse('ad_detail', args=[identifier]))
         except cloudinary_exceptions.Error as e:
             messages.add_message(request, messages.ERROR,
-            f"Error when uploading image: {e}")
+                                 f"Error when uploading image: {e}")
             return render(request, 'edit_ad.html', {'form': form})
 
     form = AdForm(instance=ad)

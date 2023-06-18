@@ -1,0 +1,37 @@
+body {
+    background-color: #efeef2;
+    font-family: 'Chivo', sans-serif;
+}
+
+.logo {
+    height: 3rem;
+}
+
+.navbar-brand img {
+    height: 5.5rem;
+}
+
+.nav-slogan {
+    height: 5.5rem;
+}
+
+.primary {
+    background-color: #ab7dca
+}
+
+.secondary {
+    background-color: #509f7a
+}
+
+.info {
+    background-color: #838580
+}
+
+.heading {
+    font-family: 'Shrikhand', cursive;
+}
+
+.btn-confirm {
+    background-color: #ab7dca;
+    color: #fff;
+}

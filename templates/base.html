@@ -1,39 +1,47 @@
 {% load static %}
 {% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
 <!DOCTYPE html>
 <html class="h-100">
 
 <head>
-    <title>got - Buy and Sell</title>
+    <title>got.</title>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-    {% bootstrap_messages %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo&family=Shrikhand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 
-<body class="d-flex flex-column h-100 main-bg">
+<body class="d-flex flex-column h-100">
+    <div class="container">
+
+    </div>
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">GOT CLASSIFIEDS SITE</a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="../static/images/got-logo-white.png"
+                    alt="got website logo"></a>
+            <ul class="navbar-nav me-auto mb-1 fs-5">
                 {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'new_ad' %}"><strong>Post an ad</strong></a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' %}">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'new_ad' %}">Post an
+                        ad</a>
+                </li>
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
@@ -43,43 +51,44 @@
                 </li>
                 {% endif %}
             </ul>
-            <span class="navbar-text text-muted">
-                buy and sell your stuff
+            <span>
+                <img class="navbar-text nav-slogan" src="../static/images/got-slogan-navbar-white.png"
+                    alt="you want it, you got it">
             </span>
-        </div>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                {% for message in messages %}
-                <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg" role="alert">
-                    {{ message | safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
 
-    <main class="flex-shrink-0 main-bg">
+    {% for message in messages %}
+    <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg" role="alert">
+        {{ message | safe }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+
+
+    <main class="flex-shrink-0">
         {% block content %}
         <!-- Page content goes in this section -->
         {% endblock content %}
     </main>
 
     <!-- Footer -->
-    <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-black">Made by Holly Bailey</p>
-        <p class="m-0 text-center text-black">Connect with us on social media:
-            <i class="fab fa-facebook-square ms-3"></i>
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i>
-        </p>
+    <footer class="flex-wrap mt-auto py-3 bg-white">
+        <div class="row">
+            <div class="container col">
+                <p class="m-0 text-black text-left ms-5">Made by Holly Bailey</p>
+            </div>
+            <div class="container col-md-4">
+                <p class="m-0 text-black text-right">Connect with us on social media:
+                    <i class="fab fa-twitter-square ms-3 text-right"></i>
+                    <i class="fab fa-instagram-square ms-3 text-right"></i>
+                    <i class="fab fa-youtube-square ms-3 text-right"></i>
+                </p>
+            </div>
     </footer>
 </body>
+
 <!-- Scripts -->
 <script>
     setTimeout(function () {
