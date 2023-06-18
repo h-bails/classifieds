@@ -3,37 +3,48 @@
 
 {% block content %}
 
-<h1>{{ advertisement.title }}</h1>
-<h4>Posted on <strong>{{ advertisement.posted_on }}</strong> by <strong>{{ advertisement.created_by }}</strong></h4>
-<h5>Category: {{ advertisement.category }}</h5>
-<p>Ad ID: {{advertisement.identifier }}</p>
-<p>Description: {{ advertisement.description }}</p>
-<p><strong>Price: ${{ advertisement.price }}</strong></p>
+<div class="container">
+    <div class="row py-4">
+        <div class="col-lg-6">
+            <h1>{{ advertisement.title }}</h1>
+            <h4>Posted on <strong>{{ advertisement.posted_on }}</strong> by <strong>
+                    {{ advertisement.created_by }}</strong>
+            </h4>
+            <h5>Category: {{ advertisement.category }}</h5>
+            <p>Ad ID: {{advertisement.identifier }}</p>
+            <p>Description:<br>
+                {{ advertisement.description }}</p>
+            <p><strong>Price: ${{ advertisement.price }}</strong></p>
+        </div>
+        <div class="col-lg-6 pt-5">
+            {% if advertisement.image_1 %}
+            {% cloudinary advertisement.image_1 format="jpg" width=300 height=300 crop="fill" %}
+            {% endif %}
 
-{% if advertisement.image_1 %}
-{% cloudinary advertisement.image_1 format="jpg" width=300 height=300 crop="fill" %}
-{% endif %}
-
-{% if advertisement.image_2 %}
-{% cloudinary advertisement.image_2 format="jpg" width=300 height=300 crop="fill" %}
-{% endif %}
-
-<br><br>
-{% if user.is_authenticated and user == advertisement.created_by and advertisement.identifier %}
-<button><a href="{% url 'edit' advertisement.identifier %}">Edit ad</a></button>
-<button><a href="{% url 'delete' advertisement.identifier %}">Delete ad</a></button>
-{% endif %}
-{% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}
-<button><a href="{% url 'save' advertisement.identifier %}">Save ad</a></button>
-<h3>Contact {{ advertisement.created_by}} about this item</h3>
-<form method="POST" action="{% url 'ad_detail' advertisement.identifier %}">
-    {% csrf_token %}
-    {{ contact_form.as_p }}
-    <div>
-        <p>
-            <button type="submit">Send message</button>
-        </p>
+            {% if advertisement.image_2 %}
+            {% cloudinary advertisement.image_2 format="jpg" width=300 height=300 crop="fill" %}
+            {% endif %}
+        </div>
     </div>
-</form>
-{% endif %}
+    {% if user.is_authenticated and user == advertisement.created_by and advertisement.identifier %}
+    <button class="btn btn-secondary secondary mt-3"><a href="{% url 'edit' advertisement.identifier %}">Edit
+            ad</a></button>
+    <button class="btn btn-secondary secondary mt-3"><a href="{% url 'delete' advertisement.identifier %}">Delete
+            ad</a></button>
+    {% endif %}
+    {% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}
+    <button><a href="{% url 'save' advertisement.identifier %}">Save ad</a></button>
+    <h3>Contact {{ advertisement.created_by}} about this item</h3>
+    <form method="POST" action="{% url 'ad_detail' advertisement.identifier %}">
+        {% csrf_token %}
+        {{ contact_form.as_p }}
+        <div>
+            <p>
+                <button class="btn btn-secondary secondary mt-3" type="submit">Send message</button>
+            </p>
+        </div>
+    </form>
+    {% endif %}
+</div>
+
 {%endblock%}
