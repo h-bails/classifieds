@@ -29,7 +29,9 @@
     {% if user.is_authenticated and user == advertisement.created_by and advertisement.identifier %}
     <button class="btn btn-secondary secondary mt-3"><a href="{% url 'edit' advertisement.identifier %}">Edit
             ad</a></button>
-    <button class="btn btn-secondary secondary mt-3"><a href="{% url 'delete' advertisement.identifier %}">Delete
+    <button class="btn btn-secondary secondary mt-3"><a
+            onclick="return confirm('Are you sure you want to delete this?')"
+            href="{% url 'delete' advertisement.identifier %}">Delete
             ad</a></button>
     {% endif %}
     {% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}

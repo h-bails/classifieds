@@ -28,7 +28,7 @@ def new_ad(request):
 
         try:
             if form.is_valid():
-                ad = form.save()
+                ad = form.save(commit=False)
                 ad.email = request.user.email
                 ad.username = request.user.username
                 ad.created_by = request.user
@@ -169,3 +169,17 @@ def send_email(request, recipient, subject, message):
         print("Email sent successfully!")
     except Exception as e:
         print(f"Failed to send email due to: {str(e)}")
+
+@login_required
+def delete_profile(request, username):
+    if request.user.username != username:
+        return HttpResponseForbidden()
+
+    user = request.user
+    user.delete()
+    messages.add_message(request, messages.ERROR,
+                         "Account deleted.")
+    logout(request)
+    return redirect('/')
+
+    
