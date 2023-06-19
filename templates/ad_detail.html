@@ -15,38 +15,47 @@
             <p>Description:<br>
                 {{ advertisement.description }}</p>
             <p><strong>Price: ${{ advertisement.price }}</strong></p>
+            {% if user.is_authenticated and user == advertisement.created_by and advertisement.identifier %}
+            <button class="btn btn-secondary secondary mt-3"><a href="{% url 'edit' advertisement.identifier %}">Edit
+                    ad</a></button>
+            <button class="btn btn-secondary secondary mt-3"><a
+                    onclick="return confirm('Are you sure you want to delete this?')"
+                    href="{% url 'delete' advertisement.identifier %}">Delete
+                    ad</a></button>
+            {% endif %}
+            {% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}
+            <button class="btn btn-secondary secondary mt-3"><a href="{% url 'save' advertisement.identifier %}">Save
+                    ad</a></button>
+            {% endif %}
         </div>
         <div class="col-lg-6 pt-5">
-            {% if advertisement.image_1 %}
-            {% cloudinary advertisement.image_1 format="jpg" width=300 height=300 crop="fill" %}
-            {% endif %}
+            <div class="d-flex flex-wrap justify-content-between">
+                {% if advertisement.image_1 %}
+                {% cloudinary advertisement.image_1 format="jpg" width=300 height=300 crop="fill" %}
+                {% endif %}
 
-            {% if advertisement.image_2 %}
-            {% cloudinary advertisement.image_2 format="jpg" width=300 height=300 crop="fill" %}
+                {% if advertisement.image_2 %}
+                {% cloudinary advertisement.image_2 format="jpg" width=300 height=300 crop="fill" %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}
+            <h3>Contact {{ advertisement.created_by}} about this item</h3>
+            <form method="POST" action="{% url 'ad_detail' advertisement.identifier %}">
+                {% csrf_token %}
+                {{ contact_form.as_p }}
+                <div>
+                    <p>
+                        <button class="btn btn-secondary secondary mt-3" type="submit">Send message</button>
+                    </p>
+                </div>
+            </form>
             {% endif %}
         </div>
     </div>
-    {% if user.is_authenticated and user == advertisement.created_by and advertisement.identifier %}
-    <button class="btn btn-secondary secondary mt-3"><a href="{% url 'edit' advertisement.identifier %}">Edit
-            ad</a></button>
-    <button class="btn btn-secondary secondary mt-3"><a
-            onclick="return confirm('Are you sure you want to delete this?')"
-            href="{% url 'delete' advertisement.identifier %}">Delete
-            ad</a></button>
-    {% endif %}
-    {% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}
-    <button><a href="{% url 'save' advertisement.identifier %}">Save ad</a></button>
-    <h3>Contact {{ advertisement.created_by}} about this item</h3>
-    <form method="POST" action="{% url 'ad_detail' advertisement.identifier %}">
-        {% csrf_token %}
-        {{ contact_form.as_p }}
-        <div>
-            <p>
-                <button class="btn btn-secondary secondary mt-3" type="submit">Send message</button>
-            </p>
-        </div>
-    </form>
-    {% endif %}
 </div>
 
 {%endblock%}

@@ -11,10 +11,10 @@
 
 <!-- Ad list -->
 <div class="container flex-wrap py-5">
-    <div class="row justify-content-between">
+    <div class="row justify-content-start gap-5">
         <h2>Latest ads:</h2>
         {% for advertisement in advertisement_list %}
-        <div class="card col-lg-3 my-2">
+        <div class="card col-lg-2 my-2">
             <div class="card-body">
                 <a href="{% url 'ad_detail' advertisement.identifier  %}">
                     <h4 class="card-title text-decoration-none">{{ advertisement.title }}</h4>
