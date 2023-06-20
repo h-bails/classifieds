@@ -52,7 +52,7 @@
                 {% endif %}
             </ul>
             <span>
-                <img class="navbar-text nav-slogan" src="../static/images/got-slogan-navbar-white.png"
+                <img class="navbar-text nav-slogan d-sm-block d-none" src="../static/images/got-slogan-navbar-white.png"
                     alt="you want it, you got it">
             </span>
         </div>
@@ -62,7 +62,7 @@
     {% for message in messages %}
     <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg" role="alert">
         {{ message | safe }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" class="btn-close ps-5" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {% endfor %}
 

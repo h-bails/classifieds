@@ -94,7 +94,7 @@ def delete_ad(request, identifier):
         return HttpResponseForbidden()
 
     ad.delete()
-    messages.add_message(request, messages.ERROR,
+    messages.add_message(request, messages.WARNING,
                          "Ad deleted.")
     return redirect('/')
 
@@ -141,7 +141,7 @@ def save_ad(request, identifier):
         messages.add_message(request, messages.SUCCESS, "Ad saved.")
     else:
         request.user.saved_ads.remove(ad)
-        messages.add_message(request, messages.ERROR, "Ad unsaved.")
+        messages.add_message(request, messages.WARNING, "Ad unsaved.")
     return render(request, 'ad_detail.html', context={"advertisement": ad})
 
 
@@ -170,6 +170,7 @@ def send_email(request, recipient, subject, message):
     except Exception as e:
         print(f"Failed to send email due to: {str(e)}")
 
+
 @login_required
 def delete_profile(request, username):
     if request.user.username != username:
@@ -181,5 +182,3 @@ def delete_profile(request, username):
                          "Account deleted.")
     logout(request)
     return redirect('/')
-
-    
