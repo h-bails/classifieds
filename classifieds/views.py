@@ -170,7 +170,7 @@ def send_email(request, recipient, subject, message):
     except Exception as e:
         print(f"Failed to send email due to: {str(e)}")
 
-
+# Allows an authenticated user to delete their profile.
 @login_required
 def delete_profile(request, username):
     if request.user.username != username:

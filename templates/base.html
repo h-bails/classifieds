@@ -25,7 +25,6 @@
     </div>
 
     <!-- Navigation -->
-
     <nav class="navbar navbar-expand-lg navbar-light primary shadow">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}"><img src="../static/images/got-logo-white.png"
@@ -58,7 +57,7 @@
         </div>
     </nav>
 
-
+    <!-- Messages display -->
     {% for message in messages %}
     <div class="alert {{ message.tags }} alert-dismissable fade show" id="msg" role="alert">
         {{ message | safe }}
@@ -74,7 +73,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="flex-wrap pt-3 bg-white shadow">
+    <footer class="flex-wrap mt-auto pt-3 bg-white shadow">
         <div class="row">
             <div class="col-6 ps-5">
                 <p class="text-black text-left">Made by Holly Bailey</p>

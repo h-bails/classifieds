@@ -24,6 +24,7 @@ class AdForm(forms.ModelForm):
         },
         required=False,
     )
+    # specify form fields and style the input widgets for the fields
 
     class Meta:
         model = Advertisement

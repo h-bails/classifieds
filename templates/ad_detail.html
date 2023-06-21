@@ -5,6 +5,7 @@
 
 <div class="container">
     <div class="row py-4">
+        <!-- Advertisement detail -->
         <div class="col-lg-6">
             <h1>{{ advertisement.title }}</h1>
             <h4>Posted on <strong>{{ advertisement.posted_on }}</strong> by <strong>
@@ -28,6 +29,7 @@
                     ad</a></button>
             {% endif %}
         </div>
+        <!-- Image section -->
         <div class="col-lg-6 pt-5">
             <div class="d-flex flex-wrap justify-content-between">
                 {% if advertisement.image_1 %}
@@ -40,6 +42,7 @@
             </div>
         </div>
     </div>
+    <!-- Contact form section -->
     <div class="row">
         <div class="col-12">
             {% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}
