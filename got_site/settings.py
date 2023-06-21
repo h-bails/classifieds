@@ -72,6 +72,7 @@ MESSAGE_TAGS = {
     messages.INFO: 'alert-info',
     messages.SUCCESS: 'alert-success',
     messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
 }
 
 
@@ -177,4 +178,3 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
-
