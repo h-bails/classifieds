@@ -7,7 +7,6 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
 from cloudinary import exceptions as cloudinary_exceptions
 
 
@@ -91,7 +90,7 @@ def view_ad(request, identifier):
 def delete_ad(request, identifier):
     ad = get_object_or_404(Advertisement, identifier=identifier)
     if request.user != ad.created_by:
-        return HttpResponseForbidden()
+        return render(request, '403.html', status=403)
 
     ad.delete()
     messages.add_message(request, messages.WARNING,
@@ -104,7 +103,7 @@ def delete_ad(request, identifier):
 def edit_ad(request, identifier):
     ad = get_object_or_404(Advertisement, identifier=identifier)
     if request.user != ad.created_by:
-        return HttpResponseForbidden()
+        return render(request, '403.html', status=403)
 
     if request.method == 'POST':
         form = AdForm(request.POST, request.FILES, instance=ad)
@@ -132,7 +131,7 @@ def edit_ad(request, identifier):
 def save_ad(request, identifier):
     ad = get_object_or_404(Advertisement, identifier=identifier)
     if request.user == ad.created_by:
-        return HttpResponseForbidden()
+        return render(request, '403.html', status=403)
 
     saved_ads = request.user.saved_ads.all()
 
@@ -171,10 +170,12 @@ def send_email(request, recipient, subject, message):
         print(f"Failed to send email due to: {str(e)}")
 
 # Allows an authenticated user to delete their profile.
+
+
 @login_required
 def delete_profile(request, username):
     if request.user.username != username:
-        return HttpResponseForbidden()
+        return render(request, '403.html', status=403)
 
     user = request.user
     user.delete()

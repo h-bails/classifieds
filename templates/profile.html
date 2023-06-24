@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+{% load cloudinary %}
 
 {% block content %}
 <!-- 'My Details section' -->
@@ -25,9 +27,14 @@
     <!-- Created Ads section -->
     <div class="row">
         <h2 class="pt-2">Created ads</h2>
-        <div class="row justify-content-between">
+        <div class="row justify-content-start gap-5">
             {% for ad in user_ads %}
-            <div class="card col-lg-5 my-2">
+            <div class="card col-lg-2 my-2">
+                {% if ad.image_1 %}
+                {% cloudinary ad.image_1 format="jpg" class="card-img-top pt-2" %}
+                {% else %}
+                <img class='card-img-top pt-2' src="{% static 'images/placeholder.jpg' %}" />
+                {% endif %}
                 <div class="card-body">
                     <a href="{% url 'ad_detail' ad.identifier  %}">
                         <h4>{{ ad.title }}</h4>
@@ -41,11 +48,16 @@
         </div>
     </div>
     <!-- Saved Ads section -->
-    <div class="row">
-        <h2 class="pt-2">Saved ads</h2>
-        <div class="row justify-content-between">
+    <div class="row mb-4">
+        <h2 class="pt-4">Saved ads</h2>
+        <div class="row justify-content-start gap-5">
             {% for ad in saved_ads %}
-            <div class="card col-lg-5 my-2">
+            <div class="card col-lg-2 my-2">
+                {% if ad.image_1 %}
+                {% cloudinary ad.image_1 format="jpg" class="card-img-top pt-2" %}
+                {% else %}
+                <img class='card-img-top pt-2' src="{% static 'images/placeholder.jpg' %}" />
+                {% endif %}
                 <div class="card-body">
                     <a href="{% url 'ad_detail' ad.identifier  %}">
                         <h4>{{ ad.title }}</h4>
