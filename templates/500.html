@@ -2,9 +2,13 @@
 
 {% block content %}
 
-<div>
-    <p>Weird - the server encountered an unknown error. Your request is sadly unfulfilled.</p>
-    <a href="{% url 'home' %}">Go home?</a>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <p>Weird - the server encountered an unknown error. Your request is sadly unfulfilled.</p>
+            <a href="{% url 'home' %}">Go home?</a>
+        </div>
+    </div>
 </div>
 
 {%endblock%}

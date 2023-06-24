@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cloudinary %}
 
 {% block content %}
 
 <!-- Hero Image -->
 <div class="container-fluid px-0">
     <div class="row">
-        <img class='img-fluid w-100 px-0' src="{% static 'images/hero-banner-intro.png' %}" alt="" />
+        <img class='img-fluid w-100 px-0' src="{% static 'images/hero-banner-intro.png' %}" alt="hero-image-banner" />
     </div>
 </div>
 
@@ -16,6 +17,11 @@
         <h2>Latest ads:</h2>
         {% for advertisement in advertisement_list %}
         <div class="card col-lg-2 my-2">
+            {% if advertisement.image_1 %}
+            {% cloudinary advertisement.image_1 format="jpg" class="card-img-top pt-3" %}
+            {% else %}
+            <img class='card-img-top pt-3' src="{% static 'images/placeholder.jpg' %}" />
+            {% endif %}
             <div class="card-body">
                 <a href="{% url 'ad_detail' advertisement.identifier  %}">
                     <h4 class="card-title text-decoration-none">{{ advertisement.title }}</h4>

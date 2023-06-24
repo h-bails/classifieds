@@ -15,7 +15,7 @@
             <p>Ad ID: {{advertisement.identifier }}</p>
             <p>Description:<br>
                 {{ advertisement.description }}</p>
-            <p><strong>Price: ${{ advertisement.price }}</strong></p>
+            <p><strong>Price: €{{ advertisement.price }}</strong></p>
             {% if user.is_authenticated and user == advertisement.created_by and advertisement.identifier %}
             <button class="btn btn-secondary secondary mt-3"><a href="{% url 'edit' advertisement.identifier %}">Edit
                     ad</a></button>
