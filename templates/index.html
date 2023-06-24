@@ -26,9 +26,12 @@
                 <a href="{% url 'ad_detail' advertisement.identifier  %}">
                     <h4 class="card-title text-decoration-none">{{ advertisement.title }}</h4>
                 </a>
-                <h6 class="card-subtitle mb-2 text-muted">{{ advertisement.posted_on}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{ advertisement.category}}</h6>
+                <p class="card-subtitle mb-2 small">{{ advertisement.posted_on}}</p>
             </div>
         </div>
+        {% empty %}
+        <p>No ads posted yet.</p>
         {% endfor %}
     </div>
 </div>

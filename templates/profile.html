@@ -39,7 +39,8 @@
                     <a href="{% url 'ad_detail' ad.identifier  %}">
                         <h4>{{ ad.title }}</h4>
                     </a>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ ad.posted_on}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ ad.category}}</h6>
+                    <p class="card-subtitle mb-2 small">{{ ad.posted_on}}</p>
                 </div>
             </div>
             {% empty %}
@@ -62,7 +63,8 @@
                     <a href="{% url 'ad_detail' ad.identifier  %}">
                         <h4>{{ ad.title }}</h4>
                     </a>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ ad.posted_on}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ ad.category}}</h6>
+                    <p class="card-subtitle mb-2 small">{{ ad.posted_on}}</p>
                 </div>
             </div>
             {% empty %}
