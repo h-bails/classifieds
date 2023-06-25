@@ -20,7 +20,7 @@
             {% if advertisement.image_1 %}
             {% cloudinary advertisement.image_1 format="jpg" class="card-img-top pt-3" alt="advertisement image" %}
             {% else %}
-            <img class='card-img-top pt-3' src="{% static 'images/placeholder.jpg' %}" />
+            <img class='card-img-top pt-3' src="{% static 'images/placeholder.jpg' %}" alt='placeholder image'/>
             {% endif %}
             <div class="card-body">
                 <a href="{% url 'ad_detail' advertisement.identifier  %}">
