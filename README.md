@@ -1,4 +1,3 @@
-
 # got. - a classifieds website to buy and sell simply
 
 Got (stylised as got.) is a simple and user-friendly online classified ads platform, inspired by classifieds sites like Craigslist, Gumtree and Adverts.ie. The project is designed to provide a platform for individuals who wish to buy, sell, or exchange goods and services.
@@ -14,8 +13,8 @@ The live project can be viewed [here](https://got-it.herokuapp.com).
 
 <details>
 
-<summary>Epic 1: User registration and account management</summary>
-
+<summary>EPIC 1: User registration and account management</summary>
+<br>
 **USER STORY: User registration**
 [MUST-HAVE]
 
@@ -37,13 +36,12 @@ The live project can be viewed [here](https://got-it.herokuapp.com).
 - As a superuser/admin, I am able to log into the Django admin section of the site to manage users, ads, and categories.
 
 </details>
-
+-----
 
 <details>
 
-<summary>Epic 2: Creating and posting ads</summary>
-
-
+<summary>EPIC 2: Creating and posting ads</summary>
+<br>
 **USER STORY: Create new ad**
 [MUST HAVE]
 - As a logged-in user, I want to create new ads so that I can sell my items.
@@ -53,12 +51,12 @@ The live project can be viewed [here](https://got-it.herokuapp.com).
 - As a logged-in user, I want to upload images of the items I'm selling so that potential buyers can see the item's condition.
 
 </details>
-
+-----
 
 <details>
 
-<summary>Epic 3: Managing posted ads</summary>
-
+<summary>EPIC 3: Managing posted ads</summary>
+<br>
 **USER STORY: View posted ads**
 [MUST HAVE]
 
@@ -80,12 +78,12 @@ The live project can be viewed [here](https://got-it.herokuapp.com).
 - As a logged-in user, I want to receive notifications when someone is interested in my ad so I can respond promptly.
 
 </details>
-
+-----
 
 <details>
 
-<summary>Epic 4: Navigation and interaction</summary>
-
+<summary>EPIC 4: Navigation and interaction</summary>
+<br>
 **USER STORY: Save ads to a list**
 [SHOULD HAVE]
 

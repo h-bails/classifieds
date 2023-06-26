@@ -58,7 +58,7 @@ def view_ad(request, identifier):
             message = contact_form.cleaned_data['message']
             email_subject = f'Inquiry on your ad: "{ad.title}"'
             email_body = f"""Dear {ad.created_by.username},
-            
+
             {request.user.username} is interested in your item '{ad.title}'.
             You can contact them on {request.user.email} - please do not reply
             to this email directly.
@@ -141,7 +141,7 @@ def save_ad(request, identifier):
     else:
         request.user.saved_ads.remove(ad)
         messages.add_message(request, messages.WARNING, "Ad unsaved.")
-    return render(request, 'ad_detail.html', context={"advertisement": ad})
+    return redirect('ad_detail', identifier=identifier)
 
 
 # Class-based view for a user's profile. Displays ads the user has submitted,
@@ -168,18 +168,3 @@ def send_email(request, recipient, subject, message):
         print("Email sent successfully!")
     except Exception as e:
         print(f"Failed to send email due to: {str(e)}")
-
-# Allows an authenticated user to delete their profile.
-
-
-@login_required
-def delete_profile(request, username):
-    if request.user.username != username:
-        return render(request, '403.html', status=403)
-
-    user = request.user
-    user.delete()
-    messages.add_message(request, messages.ERROR,
-                         "Account deleted.")
-    logout(request)
-    return redirect('/')
