@@ -46,7 +46,7 @@
     <div class="row">
         <div class="col-12">
             {% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}
-            <h3>Contact {{ advertisement.created_by}} about this item</h3>
+            <h3 class="heading pt-3">Contact {{ advertisement.created_by}} about this item</h3>
             <form method="POST" action="{% url 'ad_detail' advertisement.identifier %}">
                 {% csrf_token %}
                 {{ contact_form.as_p }}
