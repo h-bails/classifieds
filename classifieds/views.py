@@ -165,6 +165,7 @@ def send_email(request, recipient, subject, message):
             'got.classifieds@gmail.com',
             [recipient, ]
         )
-        print("Email sent successfully!")
+        messages.add_message(request, messages.SUCCESS, "Message sent.")
     except Exception as e:
-        print(f"Failed to send email due to: {str(e)}")
+        messages.add_message(request, messages.ERROR,
+                             f"Failed to send email due to: {str(e)}")
