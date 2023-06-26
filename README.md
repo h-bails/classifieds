@@ -217,7 +217,12 @@ This form allows the user to create a new ad and upload the relevant images whic
 If the ad was created by the user, they have an option to edit the ad or delete it.
 
 ![ad detail page](static/readme/ad-detail-not-user-created.png)
-If the ad was not created by the user, they have an option to save the ad or send a message.
+If the ad was not created by the user, they have an option to save the ad or send a message. Should they choose to send a message, the ad seller will receive an email containing the user's details.
+
+### Email with details
+
+![email](static/readme/email.png)
+When a potential buyer contacts a seller, the seller receives an email containing the user's details and a custom message.
 
 ### Edit Ad page
 
