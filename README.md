@@ -7,7 +7,7 @@ Source code can be found [here](https://github.com/h-bails/classifieds).
 
 The live project can be viewed [here](https://got-it.herokuapp.com).
 
-![website mockup]('static/readme/mockup-all-devices-black.png')
+![website mockup](static/readme/mockup-all-devices-black.png)
 
 
 ## User Stories
@@ -139,7 +139,7 @@ As a logged-in user, I want to rate and review other sellers or buyers so that I
 </details>
 ## Design
 
-![color palettes and fonts]('static/readme/logo-font-palette.png')
+![color palettes and fonts](static/readme/logo-font-palette.png)
 
 ### Colour Scheme
 I wanted to use complimentary colours for the site, that were bright and fun. I selected mid-tones of purple and green. 
@@ -153,62 +153,62 @@ I used imagery from Pexels.com throughout the site. I tried to keep the imagery 
 ### Entity Relationship Diagrams
 ERDs were drawn up before backend development started, using Figma.
 
-![ERD mockup]('static/readme/entity-relationship-diagram.png')
+![ERD mockup](static/readme/entity-relationship-diagram.png)
 
 ### Wireframes
 Wireframes were drawn up before front-end development started, using Figma.
 
-![wireframe mockup]('static/readme/wireframes.png')
+![wireframe mockup](static/readme/wireframes.png)
 ## Features
 
 ## Homepage and base template
 ***Top nav***
-![top nav]('static/readme/top-nav.png')
+![top nav](static/readme/top-nav.png)
 The top nav contains links to login or register if the user is not authenticated. If they are, it contains options to create a new ad, view your profile, or logout. The logo and a slogan are displayed in the imagery.
 
 ***Homepage hero section***
-![hero image]('static/readme/home-hero-section.png')
+![hero image](static/readme/home-hero-section.png)
 A hero image section provides a pop of colour and trendy, engaging imagery to welcome the user to the site.
 
 ***Messages section***
-![messages section]('static/readme/home-messages.png')
+![messages section](static/readme/home-messages.png)
 Messages and user feedback are displayed underneath the top nav.
 
 ***Latest ads***
-![lasest ads section]('static/readme/home-ad-section.png')
+![lasest ads section](static/readme/home-ad-section.png)
 This is where the latest created ads appear, arranged by the most recent.
 
 ***Footer***
-![footer]('static/readme/footer.png')
+![footer](static/readme/footer.png)
 Contains developer credits and demo social media links.
 
 ## Sign-in and sign-out pages
 
 These are the standard AllAuth templates which I styled a bit to match the aesthetic of the site.
-![sign in page]('static/readme/sign-in.png')
-![sign out page]('static/readme/sign-out.png')
-![sign up page]('static/readme/sign-up.png')
+![sign in page](static/readme/sign-in.png)
+![sign out page](static/readme/sign-out.png)
+![sign up page](static/readme/sign-up.png)
 
 ## Profile page
-![profile page]('static/readme/profile-page.png')
+![profile page](static/readme/profile-page.png)
 The profile page contains basic user information, as well as a list of the ads the user has edited and the ads the user has saved.
 
 ### New Ad page
-![new ad page]('static/readme/new-ad-form.png')
+![new ad page](static/readme/new-ad-form.png)
 This form allows the user to create a new ad and upload the relevant images which will be hosted on Cloudinary.
 
 ### Ad Detail page
-![ad detail page]('static/readme/ad-detail-user-created.png')
+![ad detail page](static/readme/ad-detail-user-created.png)
 If the ad was created by the user, they have an option to edit the ad or delete it.
-![ad detail page]('static/readme/ad-detail-not-user-created.png')
+![ad detail page](static/readme/ad-detail-not-user-created.png)
 If the ad was not created by the user, they have an option to save the ad or send a message.
 
 ## Edit Ad page
-![ad detail page]('static/readme/edit-ad.png')
+![ad detail page](static/readme/edit-ad.png)
 Users can access a form to edit ads that they have created.
 
 ## Edit Ad page
-![ad detail page]('static/readme/edit-ad.png')
+![ad detail page](static/readme/edit-ad.png)
 Users can access a form to edit ads that they have created.
 
 ## Tech Stack
@@ -227,7 +227,7 @@ Python, HTML, CSS and some inline Javascript.
 
 ## Testing
 
-Testing documentation is available at ![TESTING.MD](''). *****TO UPDATE*****
+Testing documentation is available at ![TESTING.MD](). *****TO UPDATE*****
 
 
 ## Deployment
