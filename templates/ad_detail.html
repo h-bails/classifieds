@@ -25,19 +25,26 @@
                     ad</a></button>
             {% endif %}
             {% if user.is_authenticated and user != advertisement.created_by and advertisement.identifier %}
+            {% if advertisement in user.saved_ads.all %}
+            <button class="btn btn-secondary mt-3"><a href="{% url 'save' advertisement.identifier %}">Unsave
+                    ad</a></button>
+            {% else %}
             <button class="btn btn-secondary info mt-3"><a href="{% url 'save' advertisement.identifier %}">Save
                     ad</a></button>
+            {% endif %}
             {% endif %}
         </div>
         <!-- Image section -->
         <div class="col-lg-6 pt-5">
             <div class="d-flex flex-wrap justify-content-between">
                 {% if advertisement.image_1 %}
-                {% cloudinary advertisement.image_1 format="jpg" width=300 height=300 crop="fill" alt="advertisement image 1" %}
+                {% cloudinary advertisement.image_1 format="jpg" width=300 height=300 crop="fill" alt="advertisement
+                image 1" %}
                 {% endif %}
 
                 {% if advertisement.image_2 %}
-                {% cloudinary advertisement.image_2 format="jpg" width=300 height=300 crop="fill" alt="advertisement image 2" %}
+                {% cloudinary advertisement.image_2 format="jpg" width=300 height=300 crop="fill" alt="advertisement
+                image 2" %}
                 {% endif %}
             </div>
         </div>
@@ -52,7 +59,8 @@
                 {{ contact_form.as_p }}
                 <div>
                     <p>
-                        <button class="btn btn-secondary secondary mt-3" type="submit">Send message</button>
+                        <button class="btn btn-secondary secondary mt-3" type="submit">Send
+                            message</button>
                     </p>
                 </div>
             </form>
