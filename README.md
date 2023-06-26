@@ -13,8 +13,9 @@ The live project can be viewed [here](https://got-it.herokuapp.com).
 
 <details>
 
-<summary>EPIC 1: User registration and account management</summary>
+<summary> EPIC 1: User registration and account management</summary>
 <br>
+
 **USER STORY: User registration**
 [MUST-HAVE]
 
@@ -40,8 +41,9 @@ The live project can be viewed [here](https://got-it.herokuapp.com).
 
 <details>
 
-<summary>EPIC 2: Creating and posting ads</summary>
+<summary> EPIC 2: Creating and posting ads</summary>
 <br>
+
 **USER STORY: Create new ad**
 [MUST HAVE]
 - As a logged-in user, I want to create new ads so that I can sell my items.
@@ -55,8 +57,9 @@ The live project can be viewed [here](https://got-it.herokuapp.com).
 
 <details>
 
-<summary>EPIC 3: Managing posted ads</summary>
+<summary> EPIC 3: Managing posted ads</summary>
 <br>
+
 **USER STORY: View posted ads**
 [MUST HAVE]
 
@@ -82,8 +85,9 @@ The live project can be viewed [here](https://got-it.herokuapp.com).
 
 <details>
 
-<summary>EPIC 4: Navigation and interaction</summary>
+<summary> EPIC 4: Navigation and interaction</summary>
 <br>
+
 **USER STORY: Save ads to a list**
 [SHOULD HAVE]
 
@@ -107,11 +111,14 @@ The live project can be viewed [here](https://got-it.herokuapp.com).
 </details>
 
 User story acceptance criteria can be found in TESTING.MD. ***************
+Here, you'll also find details of bugs that have been fixed.
+
 ## Roadmap
 
 <details>
 
-<summary>Features not included in initial release</summary>
+<summary> Features not included in initial release</summary>
+<br>
 
 These nonessential features were not added due to time constraints in developing the initial release.
 
@@ -135,6 +142,7 @@ USER STORY: Review buyers and sellers
 As a logged-in user, I want to rate and review other sellers or buyers so that I can provide feedback and help build trust within the community.
 
 </details>
+
 ## Design
 
 ![color palettes and fonts](static/readme/logo-font-palette.png)
@@ -159,53 +167,60 @@ Wireframes were drawn up before front-end development started, using Figma.
 ![wireframe mockup](static/readme/wireframes.png)
 ## Features
 
-## Homepage and base template
+### Homepage and base template
+
 ***Top nav***
+
 ![top nav](static/readme/top-nav.png)
 The top nav contains links to login or register if the user is not authenticated. If they are, it contains options to create a new ad, view your profile, or logout. The logo and a slogan are displayed in the imagery.
 
 ***Homepage hero section***
+
 ![hero image](static/readme/home-hero-section.png)
 A hero image section provides a pop of colour and trendy, engaging imagery to welcome the user to the site.
 
 ***Messages section***
+
 ![messages section](static/readme/home-messages.png)
 Messages and user feedback are displayed underneath the top nav.
 
 ***Latest ads***
+
 ![lasest ads section](static/readme/home-ad-section.png)
 This is where the latest created ads appear, arranged by the most recent.
 
 ***Footer***
+
 ![footer](static/readme/footer.png)
 Contains developer credits and demo social media links.
 
-## Sign-in and sign-out pages
+### Sign-in and sign-out pages
 
 These are the standard AllAuth templates which I styled a bit to match the aesthetic of the site.
 ![sign in page](static/readme/sign-in.png)
 ![sign out page](static/readme/sign-out.png)
 ![sign up page](static/readme/sign-up.png)
 
-## Profile page
+### Profile page
+
 ![profile page](static/readme/profile-page.png)
 The profile page contains basic user information, as well as a list of the ads the user has edited and the ads the user has saved.
 
 ### New Ad page
+
 ![new ad page](static/readme/new-ad-form.png)
 This form allows the user to create a new ad and upload the relevant images which will be hosted on Cloudinary.
 
 ### Ad Detail page
+
 ![ad detail page](static/readme/ad-detail-user-created.png)
 If the ad was created by the user, they have an option to edit the ad or delete it.
+
 ![ad detail page](static/readme/ad-detail-not-user-created.png)
 If the ad was not created by the user, they have an option to save the ad or send a message.
 
-## Edit Ad page
-![ad detail page](static/readme/edit-ad.png)
-Users can access a form to edit ads that they have created.
+### Edit Ad page
 
-## Edit Ad page
 ![ad detail page](static/readme/edit-ad.png)
 Users can access a form to edit ads that they have created.
 
@@ -226,7 +241,7 @@ Python, HTML, CSS and some inline Javascript.
 ## Testing
 
 Testing documentation is available at ![TESTING.MD](). *****TO UPDATE*****
-
+Here, you'll also find details of bugs that have been fixed.
 
 ## Deployment
 
