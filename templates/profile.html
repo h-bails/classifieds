@@ -31,9 +31,14 @@
             {% for ad in user_ads %}
             <div class="card col-lg-2 my-2">
                 {% if ad.image_1 %}
-                {% cloudinary ad.image_1 format="jpg" class="card-img-top pt-2" alt="advertisement image" %}
+                <a href="{% url 'ad_detail' ad.identifier  %}">
+                    {% cloudinary ad.image_1 format="jpg" class="card-img-top pt-2" alt="advertisement image" %}
+                </a>
                 {% else %}
-                <img class='card-img-top pt-2' src="{% static 'images/placeholder.jpg' %}" alt='placeholder image' />
+                <a href="{% url 'ad_detail' ad.identifier  %}">
+                    <img class='card-img-top pt-2' src="{% static 'images/placeholder.jpg' %}"
+                        alt='placeholder image' />
+                </a>
                 {% endif %}
                 <div class="card-body">
                     <a href="{% url 'ad_detail' ad.identifier  %}">
@@ -55,16 +60,21 @@
             {% for ad in saved_ads %}
             <div class="card col-lg-2 my-2">
                 {% if ad.image_1 %}
-                {% cloudinary ad.image_1 format="jpg" class="card-img-top pt-2" alt="advertisement image" %}
+                <a href="{% url 'ad_detail' ad.identifier  %}">
+                    {% cloudinary ad.image_1 format="jpg" class="card-img-top pt-2" alt="advertisement image" %}
+                </a>
                 {% else %}
-                <img class='card-img-top pt-2' src="{% static 'images/placeholder.jpg' %}" alt="placeholder image" />
+                <a href="{% url 'ad_detail' ad.identifier  %}">
+                    <img class='card-img-top pt-2' src="{% static 'images/placeholder.jpg' %}"
+                        alt="placeholder image" />
+                </a>
                 {% endif %}
                 <div class="card-body">
                     <a href="{% url 'ad_detail' ad.identifier  %}">
                         <h4>{{ ad.title }}</h4>
                     </a>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ ad.category}}</h6>
-                    <p class="card-subtitle mb-2 small">{{ ad.posted_on}}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ ad.category }}</h6>
+                    <p class="card-subtitle mb-2 small">{{ ad.posted_on }}</p>
                 </div>
             </div>
             {% empty %}
