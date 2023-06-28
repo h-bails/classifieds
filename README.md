@@ -125,23 +125,30 @@ Here, you'll also find details of bugs that have been fixed.
 These nonessential features were not added due to time constraints in developing the initial release.
 
 ### Epic 1: User registration and account management
-USER STORY: Delete my profile
+
+***USER STORY: Delete my profile***
 [COULD HAVE]
-As an authenticated user, I want to be able to delete my profile if I no longer wish to be registered with the site.
+
+- As an authenticated user, I want to be able to delete my profile if I no longer wish to be registered with the site.
            
 ### Epic 3: Managing posted ads
-USER STORY: Mark as 'unavailable'
+
+***USER STORY: Mark as 'unavailable'***
 [WON’T HAVE]
-As a logged-in user, I want to mark my ads as "unavailable" so that I can inform other potential buyers of the item's status without deleting the ad entirely. (This is useful in case a sale falls through, for example).
+
+- As a logged-in user, I want to mark my ads as "unavailable" so that I can inform other potential buyers of the item's status without deleting the ad entirely. (This is useful in case a sale falls through, for example).
 
 ### Epic 4: Navigation and interaction
-USER STORY: Search by keyword
-[WON’T HAVE]
-As a visitor, I want to search for ads by keywords so that I can find items I'm interested in.
 
-USER STORY: Review buyers and sellers
+***USER STORY: Search by keyword***
 [WON’T HAVE]
-As a logged-in user, I want to rate and review other sellers or buyers so that I can provide feedback and help build trust within the community.
+
+- As a visitor, I want to search for ads by keywords so that I can find items I'm interested in.
+
+***USER STORY: Review buyers and sellers***
+[WON’T HAVE]
+
+- As a logged-in user, I want to rate and review other sellers or buyers so that I can provide feedback and help build trust within the community.
 
 </details>
 
@@ -207,6 +214,7 @@ Contains developer credits and demo social media links.
 ***Favicon***
 
 ![favicon](static/readme/home-favicon.png)
+
 The site uses a custom favicon based on the logo.
 
 ### Sign-in and sign-out pages
@@ -246,8 +254,8 @@ Users can access a form to edit ads that they have created.
 
 ### Custom error pages
 
-![404 error page](static/readme/404-error.png)
-![403 page](static/readme/403-error.png)
+![404 error page](static/readme/error-404.png)
+![403 page](static/readme/error-403.png)
 
 Custom error pages were included for 404, 403 and 500 errors.
 
@@ -297,7 +305,7 @@ pip install -r requirements.txt
 3. Choose a unique app name and add your location.
 4. From the Resources section, select Heroku Postgres.
 5. From the Deploy section, connect to Github and search for your repository. You can also enable automatic deployment if you wish.
-6. From the Settings tab, reveal the Config Vars and add your Cloudinary and database URLs and secret keys, as well as your Amazon SES credentials.
+6. From the Settings tab, reveal the Config Vars and add your Cloudinary and database URLs and secret keys, as well as your email credentials.
     You'll need the following Config Vars:
     - Django secret key
     - Cloudinary URL
