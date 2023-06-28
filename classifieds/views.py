@@ -20,8 +20,8 @@ class AdList(generic.ListView):
 
 @login_required
 def new_ad(request):
-    '''Creates a new ad when the 'Create an ad' form is filled out. Checks if the
-    form is valid, and if it is, saves the ad. Returns the user to the
+    '''Creates a new ad when the 'Create an ad' form is filled out. Checks if 
+    the form is valid, and if it is, saves the ad. Returns the user to the
     homepage.'''
     if request.method == 'POST':
         form = AdForm(request.POST, request.FILES)

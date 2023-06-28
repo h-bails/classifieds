@@ -145,6 +145,14 @@ As a logged-in user, I want to rate and review other sellers or buyers so that I
 
 </details>
 
+## Future enhancements
+
+The following may be included in future epics for this project:
+- Cloudinary images are deleted when an ad or user is deleted
+- Payment escrow service so payments can be handled online and settled when the buyer receives the item
+- UX enhancements including more intiutive buttons, and nicer confirmation modal for deleting ads
+- Ability to add more than two images to ads.
+
 ## Design
 
 ![color palettes and fonts](static/readme/logo-font-palette.png)
