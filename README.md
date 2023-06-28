@@ -174,7 +174,7 @@ Wireframes were drawn up before front-end development started, using Figma.
 ***Top nav***
 
 ![top nav](static/readme/top-nav.png)
-The top nav contains links to login or register if the user is not authenticated. If they are, it contains options to create a new ad, view your profile, or logout. The logo and a slogan are displayed in the imagery.
+The top nav contains links to login or register if the user is not authenticated. If they are, it contains options to create a new ad, view your profile, or logout. The logo and a slogan are displayed in the imagery. The nav is sticky and stays at the top of the page.
 
 ***Homepage hero section***
 
@@ -313,6 +313,7 @@ pip install -r requirements.txt
     - [Sending emails in Django using SMTP](https://opensource.com/article/22/12/django-send-emails-smtp)
     - [How to validate an uploaded image in Python Django](https://pythoncircle.com/post/773/how-to-validate-an-uploaded-image-in-python-django/)
     - [Styling Django forms](https://medium.com/swlh/how-to-style-your-django-forms-7e8463aae4fa)
+    - [Bootstrap Cheatsheet](https://bootstrap-cheatsheet.themeselection.com/#form-floating-textarea) - saved me so much time!
 
 
 ### Misc
