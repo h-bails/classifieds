@@ -11,6 +11,8 @@ The live project can be viewed [here](https://got-it.herokuapp.com).
 
 ## User Stories
 
+An agile development model was used to build this project, consisting of four Epics. This helped me to prioritize which features to release in the allocated time. The project should be considered a MVP with the most crucial functionality having been added. Please see the 'Roadmap' section below for potential future features. My GitHub project board is [here](https://github.com/users/h-bails/projects/2/views/2).
+
 <details>
 
 <summary> EPIC 1: User registration and account management</summary>
@@ -194,6 +196,11 @@ This is where the latest created ads appear, arranged by the most recent.
 ![footer](static/readme/footer.png)
 Contains developer credits and demo social media links.
 
+***Favicon***
+
+![favicon](static/readme/home-favicon.png)
+The site uses a custom favicon based on the logo.
+
 ### Sign-in and sign-out pages
 
 These are the standard AllAuth templates which I styled a bit to match the aesthetic of the site.
@@ -229,7 +236,17 @@ When a potential buyer contacts a seller, the seller receives an email containin
 ![ad detail page](static/readme/edit-ad.png)
 Users can access a form to edit ads that they have created.
 
+### Custom error pages
+
+![404 error page](static/readme/404-error.png)
+![403 page](static/readme/403-error.png)
+
+Custom error pages were included for 404, 403 and 500 errors.
+
 ## Tech Stack
+
+This project was built using the Django framework.
+
 **Languages:** 
 Python, HTML, CSS and some inline Javascript.
 
@@ -237,7 +254,7 @@ Python, HTML, CSS and some inline Javascript.
 - Cloudinary was used for image story and hosting.
 - Allauth was used for user login and authentication.
 - Gunicorn was used for project deployment.
-- ElephantSQL was used for the database.
+- ElephantSQL was used for the production database. The database in the development environment used SQLite.
 - Amazon SES was used to email users ad enquiries.
 - Bootstrap was used to assist with the responsiveness and styling of the website.
 - Git was used for version control.
@@ -264,6 +281,8 @@ Once your venv is activated, install the required packages:
 pip install -r requirements.txt
 ```
 
+**Note:** You should use git for version control when starting a new project. Find instructions [here](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/working-with-git/) on how to do this.
+
 ### Deploying to Heroku
 1. Log into your Heroku account.
 2. Create a new app.
@@ -271,6 +290,11 @@ pip install -r requirements.txt
 4. From the Resources section, select Heroku Postgres.
 5. From the Deploy section, connect to Github and search for your repository. You can also enable automatic deployment if you wish.
 6. From the Settings tab, reveal the Config Vars and add your Cloudinary and database URLs and secret keys, as well as your Amazon SES credentials.
+    You'll need the following Config Vars:
+    - Django secret key
+    - Cloudinary URL
+    - Database URL
+    - Email host, username and password settings
 7. You're ready to deploy!
 
 ## Acknowledgements
