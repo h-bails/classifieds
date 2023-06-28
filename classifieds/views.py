@@ -10,18 +10,19 @@ from django.contrib.auth.decorators import login_required
 from cloudinary import exceptions as cloudinary_exceptions
 
 
-# Includes a list of ads on the homepage by default
 class AdList(generic.ListView):
+    '''Includes a list of ads on the homepage by default'''
     model = Advertisement
     queryset = Advertisement.objects.order_by('-posted_on')
     template_name = 'index.html'
     paginate_by = 9
 
 
-# Creates a new ad when the 'Create an ad' form is filled out. Checks if the
-# form is valid, and if it is, saves the ad. Returns the user to the homepage.
 @login_required
 def new_ad(request):
+    '''Creates a new ad when the 'Create an ad' form is filled out. Checks if the
+    form is valid, and if it is, saves the ad. Returns the user to the
+    homepage.'''
     if request.method == 'POST':
         form = AdForm(request.POST, request.FILES)
 
@@ -48,9 +49,9 @@ def new_ad(request):
     return render(request, 'new_ad.html', context)
 
 
-# Shows the detail of a specific ad when a user clicks on it.
 @login_required
 def view_ad(request, identifier):
+    '''Shows the detail of a specific ad when a user clicks on it.'''
     ad = get_object_or_404(Advertisement, identifier=identifier)
     if request.method == "POST":
         contact_form = ContactForm(request.POST)
@@ -85,9 +86,9 @@ def view_ad(request, identifier):
         'advertisement': ad})
 
 
-# Allows logged-in users to delete ads that they have submitted.
 @login_required
 def delete_ad(request, identifier):
+    '''Allows logged-in users to delete ads that they have submitted.'''
     ad = get_object_or_404(Advertisement, identifier=identifier)
     if request.user != ad.created_by:
         return render(request, '403.html', status=403)
@@ -98,9 +99,9 @@ def delete_ad(request, identifier):
     return redirect('/')
 
 
-# Allows logged-in users to edit ads that they have submitted.
 @login_required
 def edit_ad(request, identifier):
+    '''Allows logged-in users to edit ads that they have submitted.'''
     ad = get_object_or_404(Advertisement, identifier=identifier)
     if request.user != ad.created_by:
         return render(request, '403.html', status=403)
@@ -126,9 +127,9 @@ def edit_ad(request, identifier):
     return render(request, 'edit_ad.html', context)
 
 
-# Allows users to save their favourite ads to a list.
 @login_required
 def save_ad(request, identifier):
+    '''Allows users to save their favourite ads to a list.'''
     ad = get_object_or_404(Advertisement, identifier=identifier)
     if request.user == ad.created_by:
         return render(request, '403.html', status=403)
@@ -144,9 +145,10 @@ def save_ad(request, identifier):
     return redirect('ad_detail', identifier=identifier)
 
 
-# Class-based view for a user's profile. Displays ads the user has submitted,
-# and a list of their saved ads.
+
 class Profile(LoginRequiredMixin, View):
+    '''Class-based view for a user's profile. Displays ads the user has
+    submitted, and a list of their saved ads.'''
     def get(self, request, *args, **kwargs):
         user_ads = request.user.user_ads.all()
         saved_ads = request.user.saved_ads.all()
@@ -158,6 +160,7 @@ class Profile(LoginRequiredMixin, View):
 
 
 def send_email(request, recipient, subject, message):
+    '''Sends an email when a user expresses interest in an ad.'''
     try:
         send_mail(
             subject,
