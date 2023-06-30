@@ -145,10 +145,10 @@ def save_ad(request, identifier):
     return redirect('ad_detail', identifier=identifier)
 
 
-
 class Profile(LoginRequiredMixin, View):
     '''Class-based view for a user's profile. Displays ads the user has
     submitted, and a list of their saved ads.'''
+
     def get(self, request, *args, **kwargs):
         user_ads = request.user.user_ads.all()
         saved_ads = request.user.saved_ads.all()

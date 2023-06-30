@@ -5,7 +5,6 @@ from cloudinary.forms import CloudinaryFileField
 from django.forms import ModelForm, TextInput, EmailInput
 
 
-
 class AdForm(forms.ModelForm):
     '''Form to create a new ad instance'''
     # auto resize the uploaded images
@@ -57,8 +56,8 @@ class ContactForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea(attrs={
                               'class': "form-control mt-3",
                               'style': 'height: 8rem',
-                              'placeholder': ('Type your message to the seller.'
-                              ' Your contact details will be automatically'
-                              ' included in the email.')
+                              'placeholder': ('Type your message to the'
+                              ' seller. Your contact details will be'
+                              ' automatically included in the email.')
                               }))
     fields = ['message']

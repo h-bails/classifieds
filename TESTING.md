@@ -154,8 +154,8 @@ I wrote scripts that automatically test key features of the application.
 ## Accessibility
 
 I ran the program through the AIM accessibility checker to ensure the site adhered to WCAG best practices.
-![wave report](static/readme/wave-accessibility-summary.png)
 
+![wave report](static/readme/wave-accessibility-summary.png)
 ## Responsiveness
 
 I ensured that the application was responsive by checking its look and functionality across a variety of devices and screen sizes.
@@ -164,13 +164,53 @@ I ensured that the application was responsive by checking its look and functiona
 
 I made sure that the application worked with different web browsers (Chrome, Firefox, Safari) and  operating systems (Windows, macOS).
 
+The following browsers were tested:
+- Chrome
+- Safari
+- Firefox
+
+The following OSs were tested:
+- Mac
+- Windows
+- ChromeOS
+
+
 ## Code validation
 
 I used the following programs nad linters to ensure the code met specific standards.
 
-HTML
-CSS
-PYTHON
+**HTML**
+The live site pages successfully went through the W3 HTML validator.
+- [Homepage](https://validator.w3.org/nu/?doc=https%3A%2F%2Fgot-it.herokuapp.com%2F)
+- [Profile page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fgot-it.herokuapp.com%2Fprofile)
+- [New Ad page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fgot-it.herokuapp.com%2Fnew_ad%2F)
+
+Any pages that required authentication to access were manually passed through the validator with no issues.
+
+**CSS**
+No errors were found when passing the site through the W3C CSS valdiator.
+[Link to report](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fgot-it.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+
+**Python**
+The following files were passed through the Code Insitute PEP8 linter with no issues:
+- views.py
+  
+  ![views linter](static/readme/linter-views.png)
+  
+- models.py
+
+  ![models linter](static/readme/linter-models.png)
+
+- forms.py
+
+  ![forms linter](static/readme/linter-forms.png)
+
+- urls.py
+
+  ![urls linter](static/readme/linter-urls.png)
+
+
+Some structural files were not passed through the linter, namely settings.py.
 
 ## Performance
 
