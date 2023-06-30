@@ -112,7 +112,7 @@ An agile development model was used to build this project, consisting of four Ep
 
 </details>
 
-User story acceptance criteria can be found in TESTING.MD. ***************
+User story acceptance criteria can be found in [TESTING.MD](TESTING.MD). 
 Here, you'll also find details of bugs that have been fixed.
 
 ## Roadmap
@@ -278,7 +278,7 @@ Python, HTML, CSS and some inline Javascript.
 
 ## Testing
 
-Testing documentation is available at ![TESTING.MD](). *****TO UPDATE*****
+Testing documentation is available at ![TESTING.MD](TESTING.MD). 
 Here, you'll also find details of bugs that have been fixed.
 
 ## Deployment
