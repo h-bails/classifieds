@@ -15,6 +15,7 @@ I wrote scripts that automatically test key features of the application.
 ## Accessibility
 
 I ran the program through the AIM accessibility checker to ensure the site adhered to WCAG best practices.
+![wave report](static/readme/wave-accessibility-summary.png)
 
 ## Responsiveness
 
@@ -35,6 +36,8 @@ PYTHON
 ## Performance
 
 I ran a Lighthouse report to make sure that the application responded quickly.
+
+![lighthouse browser report](static/readme/lighthouse-report.png)
 
 ## Bugs fixed
 
