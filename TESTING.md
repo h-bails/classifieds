@@ -133,7 +133,7 @@ I manually inspected each feature or component of the application to ensure they
 |<br>:arrow_forward: ***USER STORY: Save ads to a list***                                                                                                                                                                                            |      |
 |*SHOULD HAVE*                                                                                                                                                                                                               |      |
 |As a user, I want to save ads to a list (e.g. Favourites) so that I can access them easily in future.                                                                                                                     |      |
-|                                                                                                                                                                                                                          |      |
+|                                                                                                                                                                                                                          |      | 
 | :white_check_mark: ***ACCEPTANCE Criteria:***                                                                                                                                                                                                      |      |
 |While viewing an ad's details, the user can click a button to save the ad to a list.                                                                                                                                      |PASS  |
 |The user can view their list of saved ads from their profile.                                                                                                                                                             |PASS  |
@@ -149,16 +149,21 @@ I manually inspected each feature or component of the application to ensure they
 
 ## Automated Testing
 
-I wrote scripts that automatically test key features of the application. 
+Automated testing was not utilized for the inital release, but it will be used to test key features in future iterations. 
 
 ## Accessibility
 
 I ran the program through the AIM accessibility checker to ensure the site adhered to WCAG best practices.
 
 ![wave report](static/readme/wave-accessibility-summary.png)
+
 ## Responsiveness
 
-I ensured that the application was responsive by checking its look and functionality across a variety of devices and screen sizes.
+I ensured that the application was responsive by checking its look and functionality across a variety of devices and screen sizes. Standard Bootstrap breakpoints were used to ensure a responsive experience for users, ensuring the app was developed in a mobile-first manner.
+
+Here is a short video demonstrating the site's responsiveness:
+
+![responsivennes demo](static/readme/responsiveness.gif)
 
 ## Compatability
 
@@ -177,9 +182,10 @@ The following OSs were tested:
 
 ## Code validation
 
-I used the following programs nad linters to ensure the code met specific standards.
+I used the following programs and linters to ensure the code met specific standards.
 
 **HTML**
+
 The live site pages successfully went through the W3 HTML validator.
 - [Homepage](https://validator.w3.org/nu/?doc=https%3A%2F%2Fgot-it.herokuapp.com%2F)
 - [Profile page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fgot-it.herokuapp.com%2Fprofile)
@@ -188,10 +194,12 @@ The live site pages successfully went through the W3 HTML validator.
 Any pages that required authentication to access were manually passed through the validator with no issues.
 
 **CSS**
+
 No errors were found when passing the site through the W3C CSS valdiator.
 [Link to report](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fgot-it.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 
 **Python**
+
 The following files were passed through the Code Insitute PEP8 linter with no issues:
 - views.py
   
@@ -216,7 +224,13 @@ Some structural files were not passed through the linter, namely settings.py.
 
 I ran a Lighthouse report to make sure that the application responded quickly.
 
+Desktop:
+
 ![lighthouse browser report](static/readme/lighthouse-report.png)
+
+Mobile:
+![lighthouse mobile report](static/readme/lighthouse-report-mobile.png)
+
 
 ## Bugs fixed
 
