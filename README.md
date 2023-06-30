@@ -100,16 +100,6 @@ An agile development model was used to build this project, consisting of four Ep
 
 - As a user, I want to toggle my saved ads so that I can remove them if they are no longer relevant to me.
 
-**USER STORY: Filter ads by category**
-[COULD HAVE]
-
-- As a visitor, I want to filter ads by category so that I can view items in specific categories.
-
-**USER STORY: Sort by date or price**
-[COULD HAVE]
-
-- As a visitor, I want to sort ads by date or price so that I can view items in my preferred order.
-
 </details>
 
 User story acceptance criteria can be found in [TESTING.MD](TESTING.MD). 
@@ -149,6 +139,16 @@ These nonessential features were not added due to time constraints in developing
 [WON’T HAVE]
 
 - As a logged-in user, I want to rate and review other sellers or buyers so that I can provide feedback and help build trust within the community.
+
+**USER STORY: Filter ads by category**
+[COULD HAVE]
+
+- As a visitor, I want to filter ads by category so that I can view items in specific categories.
+
+**USER STORY: Sort by date or price**
+[COULD HAVE]
+
+- As a visitor, I want to sort ads by date or price so that I can view items in my preferred order.
 
 </details>
 
