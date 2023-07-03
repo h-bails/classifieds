@@ -102,7 +102,7 @@ An agile development model was used to build this project, consisting of four Ep
 
 </details>
 
-User story acceptance criteria can be found in [TESTING.MD](TESTING.MD). 
+User story acceptance criteria can be found in [TESTING.md](TESTING.md). 
 Here, you'll also find details of bugs that have been fixed.
 
 ## Roadmap
@@ -220,6 +220,7 @@ The site uses a custom favicon based on the logo.
 ### Sign-in and sign-out pages
 
 These are the standard AllAuth templates which I styled a bit to match the aesthetic of the site.
+
 ![sign in page](static/readme/sign-in.png)
 ![sign out page](static/readme/sign-out.png)
 ![sign up page](static/readme/sign-up.png)
@@ -278,7 +279,7 @@ Python, HTML, CSS and some inline Javascript.
 
 ## Testing
 
-Testing documentation is available at ![TESTING.MD](TESTING.MD). 
+Testing documentation is available at ![TESTING.md](TESTING.md). 
 Here, you'll also find details of bugs that have been fixed.
 
 ## Deployment
@@ -316,11 +317,11 @@ pip install -r requirements.txt
 ## Acknowledgements
 
 ### Media 
-- All images courtesy of [pexels.com](pexels.com)
-- Logo, slogan and hero image artwork via [Canva](canva.com)
-- Wireframes were done in [Figma](figma.com)
-- [Google Fonts](fonts.google.com) was used to import the fonts that were used style.css file which is used on all pages throughout the project.
-- [Font Awesome](fontawesome.com) was used to add icons to the footer.
+- All images courtesy of [https://pexels.com](pexels.com)
+- Logo, slogan and hero image artwork via [Canva](https://canva.com)
+- Wireframes were done in [Figma](https://figma.com)
+- [Google Fonts](https://fonts.google.com) was used to import the fonts that were used style.css file which is used on all pages throughout the project.
+- [Font Awesome](https://fontawesome.com) was used to add icons to the footer.
 
 ### Features and bug fixes
 - Thanks to the Code Institute team for this [Django blog walkthrough](https://github.com/Code-Institute-Solutions/Django3blog/), which I was able to use as a base for this project.
