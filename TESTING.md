@@ -1,7 +1,7 @@
 
 # How **got.** was tested
 
-Back to [README.MD](README.MD)<br>
+Back to [README.md](README.md)<br>
 
 
 ## Manual Testing
@@ -229,6 +229,7 @@ Desktop:
 ![lighthouse browser report](static/readme/lighthouse-report.png)
 
 Mobile:
+
 ![lighthouse mobile report](static/readme/lighthouse-report-mobile.png)
 
 
@@ -243,4 +244,4 @@ I fixed several bugs during the course of the project.
 - Bug fixed: '/save/' remains in url after ad saves and unsaves, and causes contact form to disappear. Fixed by properly configuring the relevant return(request) in the save_ad function views.py.
 - Bug fixed: Multiple blocks of messages appearing: Caused by having a tag to display messages at the top of base.html, as well as a seperate div where messages were displayed.
 
-Back to [README.MD](README.MD)<br>
+Back to [README.md](README.md)<br>
